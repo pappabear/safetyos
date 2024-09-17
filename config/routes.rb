@@ -1,5 +1,9 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+
+  get "/service-worker.js" => "service_worker#service_worker"
+  get "/manifest.json" => "service_worker#manifest"
+
   draw :accounts
   draw :api
   draw :billing

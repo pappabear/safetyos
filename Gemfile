@@ -71,3 +71,9 @@ eval_gemfile "Gemfile.jumpstart"
 
 # We recommend using strong migrations when your app is in production
 # gem "strong_migrations"
+
+gem "faker", "~> 3.2"
+gem "colorize"
+gem "actiontext"
+
+gem 'rails-erd', group: :development # https://github.com/voormedia/rails-erd?tab=readme-ov-file

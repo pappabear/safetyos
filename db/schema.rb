@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_24_021434) do
+ActiveRecord::Schema[7.2].define(version: 2024_02_24_021434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,7 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_021434) do
     t.bigint "user_id", null: false
     t.string "token"
     t.string "name"
-    t.jsonb "metadata", default: {}
+    t.jsonb "metadata"
     t.boolean "transient", default: false
     t.datetime "last_used_at", precision: nil
     t.datetime "expires_at", precision: nil
@@ -300,7 +300,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_24_021434) do
     t.string "name", null: false
     t.integer "amount", default: 0, null: false
     t.string "interval", null: false
-    t.jsonb "details", default: {}, null: false
+    t.jsonb "details"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "trial_period_days", default: 0
