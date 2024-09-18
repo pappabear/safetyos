@@ -1,3 +1,8 @@
+<h4 class="ml-2 flex xs:mt-5">
+    <%= current_account.name %>
+</h4>
 <%# Place any links for the LEFT side of the nav bar here. Be sure to add class: "nav-link" to each item for proper spacing. %>
-<%= nav_link_to "Frequencies", frequencies_path, class: "nav-link", starts_with: frequencies_path %>
-<%= nav_link_to "Todo Statuses", todo_statuses_path, class: "nav-link", starts_with: todo_statuses_path %>
+<%= nav_link_to "Dashboard", "/", class: "nav-link", starts_with: frequencies_path %>
+<%= nav_link_to "Safety Plans", "/", class: "nav-link", starts_with: todo_statuses_path %>
+<%= nav_link_to "Resources", "/", class: "nav-link", starts_with: todo_statuses_path %>
+<%= nav_link_to "JTBD Framework", "/", class: "nav-link", starts_with: todo_statuses_path %>
