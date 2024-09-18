@@ -30,12 +30,17 @@ puts ' '
   puts '-- Adding global data -------------------------'.green
   puts ' '
   
-  #puts '         ... Adding `genders`'
-  #Gender.create!(name: 'Male', code: 'M')
-  #Gender.create!(name: 'Female', code: 'F')
-  #Gender.create!(name: 'Other', code: 'O')
-  
-  
+  puts '         ... Adding `frequencies`'
+  Frequency.create!(name: 'Daily', code: 'D')
+  Frequency.create!(name: 'Weekly', code: 'W')  
+  Frequency.create!(name: 'Quarterly', code: 'Q')
+  Frequency.create!(name: 'Annually', code: 'Y')
+
+  TodoStatus.create!(name: 'New')
+  TodoStatus.create!(name: 'In Progress')
+  TodoStatus.create!(name: 'Done')
+
+
 puts '-- Adding customers as built-in Accounts -------------------------'.green
 puts ' '
   

@@ -1,0 +1,9 @@
+<div id="<%= dom_id todo_status %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= todo_status.name %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this todo status", todo_status, class: "btn btn-secondary" %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<%= content_for :title, "Todo Statuses ##{@todo_status.id}" %>
+<%= turbo_stream_from @todo_status %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="h3">
+      <%= link_to "Todo Statuses", todo_statuses_path, class: "text-black dark:text-white" %>
+      <span class="text-gray-400 font-light mx-2">\</span>
+      Todo Status #<%= @todo_status.id %>
+    </h1>
+    <%= link_to t("edit"), edit_todo_status_path(@todo_status), class: "btn btn-secondary" %>
+  </div>
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+    <%= render @todo_status %>
+  </div>
+</div>

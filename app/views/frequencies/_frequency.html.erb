@@ -1,0 +1,13 @@
+<div id="<%= dom_id frequency %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= frequency.name %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Code</p>
+    <%= frequency.code %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this frequency", frequency, class: "btn btn-secondary" %>
+  <% end %>
+</div>
