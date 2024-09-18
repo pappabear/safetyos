@@ -7,6 +7,7 @@
       <% end %>
       <%= Jumpstart.config.application_name %>
     </title>
+    <link rel="manifest" crossorigin="use-credentials" href="/manifest.json" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= viewport_meta_tag %>
@@ -24,8 +25,6 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   </head>
   <body class="h-full font-sans antialiased font-normal leading-normal bg-gray-50 dark:bg-gray-900 dark:text-gray-50" data-controller="theme" data-theme-preference-value="light">
     <div class="main flex flex-col">

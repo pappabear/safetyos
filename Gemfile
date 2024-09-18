@@ -75,5 +75,5 @@ eval_gemfile "Gemfile.jumpstart"
 gem "faker", "~> 3.2"
 gem "colorize"
 gem "actiontext"
-
+gem 'acts_as_tenant'
 gem 'rails-erd', group: :development # https://github.com/voormedia/rails-erd?tab=readme-ov-file
