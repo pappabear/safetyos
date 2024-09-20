@@ -71,16 +71,16 @@ puts ' '
 
 puts '      -- Adding `jobs`'
 
-Job.create! name:'Set EHS Goals', account_id:1, notes:'Add notes here', sequence:1, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Determine Hazards', account_id:1, notes:'Add notes here', sequence:2, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Mitigate Hazards', account_id:1, notes:'Add notes here', sequence:3, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Develop Policies', account_id:1, notes:'Add notes here', sequence:4, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Select Needed Tools', account_id:1, notes:'Add notes here', sequence:5, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Implement Tools', account_id:1, notes:'Add notes here', sequence:6, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Develop Rollout Process', account_id:1, notes:'Add notes here', sequence:7, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Train Employees on Process and Tools', account_id:1, notes:'Add notes here', sequence:8, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Rollout Processes and Tools', account_id:1, notes:'Add notes here', sequence:9, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Monitor Results', account_id:1, notes:'Add notes here', sequence:10, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
-Job.create! name:'Manage EHS Progress', account_id:1, notes:'Add notes here', sequence:11, description:'Loren ipsun dolor sit anet, consectetur adipisci elit, sed eiusnod tenpor incidunt ut labore et dolore nagna aliqua.'
+Job.create! name:'Set EHS Goals', account_id:1, notes:'Add notes here', sequence:1, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Determine Hazards', account_id:1, notes:'Add notes here', sequence:2, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Mitigate Hazards', account_id:1, notes:'Add notes here', sequence:3, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Develop Policies', account_id:1, notes:'Add notes here', sequence:4, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Select Needed Tools', account_id:1, notes:'Add notes here', sequence:5, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Implement Tools', account_id:1, notes:'Add notes here', sequence:6, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Develop Rollout Process', account_id:1, notes:'Add notes here', sequence:7, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Train Employees on Process and Tools', account_id:1, notes:'Add notes here', sequence:8, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Rollout Processes and Tools', account_id:1, notes:'Add notes here', sequence:9, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Monitor Results', account_id:1, notes:'Add notes here', sequence:10, description:Faker::Lorem.sentence(word_count: rand(2..10))
+Job.create! name:'Manage EHS Progress', account_id:1, notes:'Add notes here', sequence:11, description:Faker::Lorem.sentence(word_count: rand(2..10))
 
 
