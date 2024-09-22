@@ -19,7 +19,7 @@
           <%= render @job %>
       </div>
       <div class="w-full lg:w-1/2">
-          <%= render "steps" %>
+          <%= render "steps", steps: @job.steps %>
       </div>
     </div>
 
