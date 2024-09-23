@@ -94,5 +94,5 @@ Step.create! name:'Get Approval', account_id:1, job_id:3, notes:'Add notes here'
 
 
 puts ' '
-
+puts '-- Flusing Redis cache -------------------------'.green
 

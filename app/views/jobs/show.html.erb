@@ -6,9 +6,7 @@
     <div>
       <%= render "breadcrumbs" %>
       <h1 class="h3 mt-3"><%= @job.name %></h1>
-      
     </div>
-    <%= link_to t("edit"), edit_job_path(@job), class: "btn btn-secondary" %>
   </div>
 
 
@@ -17,9 +15,14 @@
     <div class="flex flex-wrap items-start justify-between">
       <div class="w-full lg:w-1/2">
           <%= render @job %>
+          <%= link_to t("edit"), edit_job_path(@job), class: "btn btn-secondary mb-5" %>
       </div>
       <div class="w-full lg:w-1/2">
           <%= render "steps", steps: @job.steps %>
+          <% if @job.steps.count == 0 %>
+            <p class="text-sm font-medium text-gray-500 mb-5">None defined yet.</p>
+          <% end %>
+          <%= link_to "Manage steps", job_steps_path(@job), class: "btn btn-secondary" %>
       </div>
     </div>
 
