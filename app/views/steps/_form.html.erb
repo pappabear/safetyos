@@ -1,24 +1,9 @@
-<%= form_with(model: step) do |form| %>
+<%= form_with(model: [@job, step]) do |form| %>
   <%= render "error_messages", resource: form.object %>
-
-  <div class="form-group">
-    <%= form.label :account_id %>
-    <%= form.text_field :account_id, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :job_id %>
-    <%= form.text_field :job_id, class: "form-control" %>
-  </div>
 
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :sequence %>
-    <%= form.text_field :sequence, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -30,9 +15,9 @@
     <%= form.button button_text(form.send(:submit_default_value)), class: "btn btn-primary" %>
 
     <% if form.object.new_record? %>
-      <%= link_to t("cancel"), steps_path, class: "btn btn-secondary" %>
+      <%= link_to t("cancel"), job_steps_path(@job), class: "btn btn-secondary" %>
     <% else %>
-      <%= link_to t("cancel"), step_path(@step), class: "btn btn-secondary" %>
+      <%= link_to t("cancel"), job_step_path(@job, @step), class: "btn btn-secondary" %>
     <% end %>
   </div>
 <% end %>

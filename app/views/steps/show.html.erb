@@ -1,17 +1,26 @@
 <%= content_for :title, "Steps ##{@step.id}" %>
 <%= turbo_stream_from @step %>
 
-<div class="container px-4 mx-auto my-8">
+<div class="container px-4 mx-auto my-4">
   <div class="flex items-center justify-between mb-4">
-    <h1 class="h3">
-      <%= link_to "Steps", steps_path, class: "text-black dark:text-white" %>
-      <span class="text-gray-400 font-light mx-2">\</span>
-      Step #<%= @step.id %>
-    </h1>
-    <%= link_to t("edit"), edit_step_path(@step), class: "btn btn-secondary" %>
+    <div>
+      <%= render "breadcrumbs" %>
+      <h1 class="h3 mt-3"><%= @step.name %></h1>
+    </div>
   </div>
 
+
   <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
-    <%= render @step %>
+
+    <div class="flex flex-wrap items-start justify-between">
+      <div class="w-full lg:w-1/2">
+          <%= render @step, name: @job.name %>
+          <%= link_to t("edit"), edit_job_step_path(@job, @step), class: "btn btn-secondary mb-5" %>
+      </div>
+      <div class="w-full lg:w-1/2">
+        tabs here
+      </div>
+    </div>
+
   </div>
 </div>
