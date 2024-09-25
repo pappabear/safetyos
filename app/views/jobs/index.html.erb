@@ -4,17 +4,22 @@
 <div class="container px-4 mx-auto my-4">
   <div class="flex items-center justify-between mb-4">
     <div>
-      <%= render "breadcrumbs" %>
+
+      <%
+      nodes = [
+            ['Home', '/'],
+            ['JTBD Framework', '/jobs'],
+            ['Jobs', '/jobs'],
+          ]
+      %>
+      <%= render "breadcrumbs", nodes: nodes %>
+      
       <h1 class="h3 mt-3">Jobs</h1>
     </div>
     <%= link_to t("scaffold.new.title", model: "Job"), new_job_path, class: "btn btn-secondary" %>
   </div>
 
-
   <%= tag.div id: ("jobs" if first_page?), class: "bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-md shadow p-6 space-y-8" do %>
-
-        
-        
 
         <ul role="list" class="divide-y divide-gray-100">
 
