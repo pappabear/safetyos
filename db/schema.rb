@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_18_185001) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_22_204840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -334,6 +334,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_185001) do
     t.string "lemon_squeezy_id"
     t.string "fake_processor_id"
     t.string "contact_url"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "job_id"
+    t.string "name"
+    t.bigint "sequence"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "url_to_action"
+    t.string "status"
   end
 
   create_table "todo_statuses", force: :cascade do |t|
