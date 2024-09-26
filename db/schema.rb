@@ -341,10 +341,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_22_204840) do
     t.bigint "job_id"
     t.string "name"
     t.bigint "sequence"
-    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
     t.string "url_to_action"
     t.string "status"
   end
