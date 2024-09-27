@@ -1,0 +1,27 @@
+<%= content_for :title, t("scaffold.edit.title", model: "Step") %>
+
+<div class="container mx-auto px-4 my-4">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+
+      <%
+      nodes = [
+            ['Home', '/'],
+            ['JTBD Framework', '/jobs'],
+            ['Jobs', '/jobs'],
+            [@job.name, job_path(@job)],
+            ['Steps', job_steps_path(@job)],
+            [@step.name, ''],
+          ]
+      %>
+      <%= render "breadcrumbs", nodes: nodes %>
+
+      <h1 class="h3 mt-3">Edit <%= @step.name %></h1>
+    </div>
+    <%= button_to t("delete"), job_step_path(@job, @step), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: t("are_you_sure") } } %>
+  </div>
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+    <%= render "form", step: @step %>
+  </div>
+</div>

@@ -4,7 +4,7 @@ class StepsController < ApplicationController
 
   # GET /steps
   def index
-    @pagy, @steps = pagy(Step.sort_by_params(params[:sort], sort_direction))
+    @pagy, @steps = pagy(Step.where(job_id: @job.id).sort_by_params(params[:sort], sort_direction))
 
     # Uncomment to authorize with Pundit
     # authorize @steps

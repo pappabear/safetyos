@@ -1,0 +1,17 @@
+<div id="<%= dom_id guide %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= guide.name %>
+  </div>
+  <div class="mb-4 text-sm font-medium">
+    <p class="text-sm font-medium text-gray-500">Description</p>
+    <%= guide.description %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Training docs</p>
+    <%= link_to guide.doc.filename, guide.doc %>
+  </div>
+<% if action_name != "show" %>
+    <%= link_to "View this guide", guide, class: "btn btn-secondary" %>
+  <% end %>
+</div>

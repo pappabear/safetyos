@@ -85,13 +85,34 @@ Job.create! name:'Manage EHS Progress', account_id:1, notes:'Add notes here', se
 puts ' '
 puts '      -- Adding `steps`'
 
-Step.create! name:'Perform Gap Analysis', account_id:1, job_id:3, notes:'Add notes here', sequence:1, description:Faker::Lorem.sentence(word_count: rand(2..10))
-Step.create! name:'Choose Mitigation Path', account_id:1, job_id:3, notes:'Add notes here', sequence:2, description:Faker::Lorem.sentence(word_count: rand(2..10))
-Step.create! name:'Set Benchmarks and Measureables', account_id:3, job_id:1, notes:'Add notes here', sequence:3, description:Faker::Lorem.sentence(word_count: rand(2..10))
-Step.create! name:'Estimate Tools and Needs', account_id:1, job_id:3, notes:'Add notes here', sequence:4, description:Faker::Lorem.sentence(word_count: rand(2..10))
-Step.create! name:'Get Approval', account_id:1, job_id:3, notes:'Add notes here', sequence:5, description:Faker::Lorem.sentence(word_count: rand(2..10))
+jobs = Job.all
+jobs.each_with_index do |j, i|
+    if i == 2
+        Step.create! name: 'Perform Gap Analysis', account_id:1, job_id:3, notes:'Add notes here', sequence:1, description:Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: 'Choose Mitigation Path', account_id:1, job_id:3, notes:'Add notes here', sequence:2, description:Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: 'Set Benchmarks and Measureables', account_id:3, job_id:1, notes:'Add notes here', sequence:3, description:Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: 'Estimate Tools and Needs', account_id:1, job_id:3, notes:'Add notes here', sequence:4, description:Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: 'Get Approval', account_id:1, job_id:3, notes:'Add notes here', sequence:5, description:Faker::Lorem.sentence(word_count: rand(2..10))
+    else
+        Step.create! name: Faker::Lorem.sentence(word_count: rand(1..3)), account_id:1, job_id: j.id, sequence:1, notes: 'Add notes here', description: Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: Faker::Lorem.sentence(word_count: rand(1..3)), account_id:1, job_id: j.id, sequence:2, notes: 'Add notes here', description: Faker::Lorem.sentence(word_count: rand(2..10))
+        Step.create! name: Faker::Lorem.sentence(word_count: rand(1..3)), account_id:1, job_id: j.id, sequence:3, notes: 'Add notes here', description: Faker::Lorem.sentence(word_count: rand(2..10))
+    end
+end
 
+puts ' '
+puts '      -- Adding `guides`'
 
+steps = Step.where(account_id: 1)
+steps.each do |s|
+    guide = Guide.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
+
+    # attach a dummy doc
+    guide.doc.attach(
+        io:  File.open(File.join(Rails.root,'app/assets/dummy_docs/SampleSafetyDoc.docx')),
+        filename: 'guide-' + guide.id.to_s + '.docx'
+    )
+end
 
 puts ' '
 puts '-- Flusing Redis cache -------------------------'.green

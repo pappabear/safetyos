@@ -1,0 +1,26 @@
+<%= content_for :title, t("scaffold.new.title", model: "Step") %>
+
+<div class="container mx-auto px-4 my-4">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+
+      <%
+      nodes = [
+            ['Home', '/'],
+            ['JTBD Framework', '/jobs'],
+            ['Jobs', '/jobs'],
+            [@job.name, job_path(@job)],
+            ['Steps', job_steps_path(@job)],
+            ['Add new step', ''],
+          ]
+      %>
+      <%= render "breadcrumbs", nodes: nodes %>
+
+      <h1 class="h3 mt-3">Add new step</h1>
+    </div>
+  </div>
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+    <%= render "form", step: @step %>
+  </div>
+</div>
