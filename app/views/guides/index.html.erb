@@ -1,34 +1,84 @@
-<%= content_for :title, "Guides" %>
-<%= turbo_stream_from :guides %>
+<%= content_for :title, "Steps ##{@step.id}" %>
+<%= turbo_stream_from @step %>
 
-<div class="container px-4 mx-auto my-8">
+<div class="container px-4 mx-auto my-4">
   <div class="flex items-center justify-between mb-4">
     <div>
-      <h1 class="h3">Guides</h1>
 
-      <div class="text-sm font-medium">
-        <span class="text-gray-500 dark:text-gray-300/75">Sort by:</span>
-        <%= sortable @guides, :account_id, "Account", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @guides, :step_id, "Step", class: "text-gray-700 dark:text-gray-300 mr-1" %>
-        <%= sortable @guides, :name, "Name", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+      <%
+      nodes = [
+            ['Home', '/'],
+            ['JTBD Framework', '/jobs'],
+            ['Jobs', '/jobs'],
+            [@job.name, job_path(@job)],
+            ['Steps', job_steps_path(@job)],
+            [@step.name, ''],
+          ]
+      %>
+      <%= render "breadcrumbs", nodes: nodes %>
+
+      <h1 class="h3 mt-3"><%= @step.name %></h1>
+    </div>
+  </div>
+
+
+  <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+
+    <div class="flex flex-wrap items-start justify-between">
+      <div class="w-full lg:w-1/3">
+          <%= render @step, name: @job.name %>
+      </div>
+      <div class="w-full lg:w-2/3">
+
+        <div>
+          <div class="sm:hidden">
+            <label for="tabs" class="sr-only">Select a tab</label>
+            <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+            <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-orange-500 focus:outline-none focus:ring-orange-500 sm:text-sm">
+              <option selected>Guidance</option>
+              <option>TODOs</option>
+              <option>Resources</option>
+            </select>
+          </div>
+          <div class="hidden sm:block">
+            <div class="border-b border-gray-200">
+              <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                <a href="<%= job_step_guides_path(@job, @step) %>" class="flex whitespace-nowrap border-b-2 border-orange-500 px-1 py-4 text-sm font-medium text-orange-600 hover:text-orange-600" aria-current="page">
+                  Guidance
+                  <span class="ml-3 hidden rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-600 md:inline-block"><%= @step.guides.count %></span>
+                </a>
+                <a href="#" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
+                  Todos
+                  <span class="ml-3 hidden rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 md:inline-block">52</span>
+                </a>
+                <a href="#" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700"> Resources </a>
+              </nav>
+            </div>
+
+            <% @guides.each do |g| %>
+
+                <div class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                    </svg>
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium"><%= link_to g.name, g.doc %></span>
+                      <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                    </div>
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <span class="font-medium text-gray-600">Edit</span>
+                  </div>
+                </div>
+            
+            <% end %>
+            
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <%= link_to t("scaffold.new.title", model: "Guide"), new_guide_path, class: "btn btn-secondary" %>
   </div>
-
-  <%= tag.div id: ("guides" if first_page?), class: "bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-md shadow p-6 space-y-8" do %>
-    <%= render partial: "guides/guide", collection: @guides, as: :guide, cached: true %>
-
-    <div class="hidden only:block text-center">
-      <p class="mb-4 h3">Create your first Guide</p>
-      <%= link_to t("scaffold.new.title", model: "Guide"), new_guide_path, class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <% if @pagy.pages > 1 %>
-    <div class="my-6 text-center">
-      <%== pagy_nav(@pagy) %>
-    </div>
-  <% end %>
 </div>

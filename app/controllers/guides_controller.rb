@@ -5,7 +5,7 @@ class GuidesController < ApplicationController
 
   # GET /guides
   def index
-    @pagy, @guides = pagy(Guide.sort_by_params(params[:sort], sort_direction))
+    @pagy, @guides = pagy(Guide.where(step_id: @step.id).sort_by_params(params[:sort], sort_direction))
 
     # Uncomment to authorize with Pundit
     # authorize @guides

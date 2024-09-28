@@ -105,6 +105,17 @@ puts '      -- Adding `guides`'
 
 steps = Step.where(account_id: 1)
 steps.each do |s|
+    
+    # attachment #1
+    guide = Guide.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
+
+    # attach a dummy doc
+    guide.doc.attach(
+        io:  File.open(File.join(Rails.root,'app/assets/dummy_docs/SampleSafetyDoc.docx')),
+        filename: 'guide-' + guide.id.to_s + '.docx'
+    )
+
+    # attachment #2
     guide = Guide.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
 
     # attach a dummy doc
