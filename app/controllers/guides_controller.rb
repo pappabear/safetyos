@@ -37,7 +37,7 @@ class GuidesController < ApplicationController
 
     respond_to do |format|
       if @guide.save
-        format.html { redirect_to @guide, notice: "Guide was successfully created." }
+        format.html { redirect_to job_step_guides_path(@job, @step), notice: "Guide was successfully created." }
         format.json { render :show, status: :created, location: @guide }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +50,7 @@ class GuidesController < ApplicationController
   def update
     respond_to do |format|
       if @guide.update(guide_params)
-        format.html { redirect_to @guide, notice: "Guide was successfully updated." }
+        format.html { redirect_to job_step_guides_path(@job, @step), notice: "Guide was successfully updated." }
         format.json { render :show, status: :ok, location: @guide }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class GuidesController < ApplicationController
   def destroy
     @guide.destroy!
     respond_to do |format|
-      format.html { redirect_to guides_url, status: :see_other, notice: "Guide was successfully destroyed." }
+      format.html { redirect_to job_step_guides_path(@job, @step), status: :see_other, notice: "Guide was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -90,7 +90,7 @@ class GuidesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def guide_params
-    params.require(:guide).permit(:account_id, :step_id, :name)
+    params.require(:guide).permit(:account_id, :step_id, :name, :description, :doc)
 
     # Uncomment to use Pundit permitted attributes
     # params.require(:guide).permit(policy(@guide).permitted_attributes)

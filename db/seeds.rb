@@ -106,23 +106,25 @@ puts '      -- Adding `guides`'
 steps = Step.where(account_id: 1)
 steps.each do |s|
     
-    # attachment #1
-    guide = Guide.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
+    # add a Guide
+    guide1 = Guide.new name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
 
     # attach a dummy doc
-    guide.doc.attach(
+    guide1.doc.attach(
         io:  File.open(File.join(Rails.root,'app/assets/dummy_docs/SampleSafetyDoc.docx')),
-        filename: 'guide-' + guide.id.to_s + '.docx'
+        filename: 'guide-' + guide1.id.to_s + '.docx'
     )
+    guide1.save!
 
-    # attachment #2
-    guide = Guide.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
+    # add another Guide
+    guide2 = Guide.new name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, description: Faker::Lorem.sentence(word_count: rand(2..10))
 
     # attach a dummy doc
-    guide.doc.attach(
+    guide2.doc.attach(
         io:  File.open(File.join(Rails.root,'app/assets/dummy_docs/SampleSafetyDoc.docx')),
-        filename: 'guide-' + guide.id.to_s + '.docx'
+        filename: 'guide-' + guide2.id.to_s + '.docx'
     )
+    guide2.save!
 end
 
 puts ' '
