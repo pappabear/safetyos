@@ -1,4 +1,4 @@
-<%= content_for :title, "Steps ##{@step.id}" %>
+<%= content_for :title, t("scaffold.new.title", model: "Step") %>
 <%= turbo_stream_from @step %>
 
 <div class="container px-4 mx-auto my-4">
@@ -13,6 +13,7 @@
             [@job.name, job_path(@job)],
             ['Steps', job_steps_path(@job)],
             [@step.name, ''],
+            ['Guidance', ''],
           ]
       %>
       <%= render "breadcrumbs", nodes: nodes %>
@@ -44,9 +45,9 @@
           <div class="hidden sm:block">
             <div class="border-b border-gray-200">
               <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <a href="<%= job_step_guides_path(@job, @step) %>" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
+                <a href="<%= job_step_guides_path(@job, @step) %>" class="flex whitespace-nowrap border-b-2 border-orange-500 px-1 py-4 text-sm font-medium text-orange-600 hover:text-orange-600" aria-current="page">
                   Guidance
-                  <span class="ml-3 hidden rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 md:inline-block"><%= @step.guides.count %></span>
+                  <span class="ml-3 hidden rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-600 md:inline-block"><%= @step.guides.count %></span>
                 </a>
                 <a href="#" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
                   Todos
@@ -56,23 +57,9 @@
               </nav>
             </div>
 
-            <div class="mt-10">
-              <dl class="space-y-10">
-
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Guidance</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">Practical advice on how to approach getting this Step completed.</dd>
-                </div>
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Todos</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">A concrete real-life list of actions to take.</dd>
-                </div>
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Resources</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">Useful reference material that can assit your planning.</dd>
-                </div>
-
-              </dl>
+            <div class="p-8 bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded shadow">
+              <span class="text-xl mb-10">Add a new Guidance document</span>
+              <%= render "form", guide: @guide %>
             </div>
 
           </div>
@@ -83,3 +70,4 @@
 
   </div>
 </div>
+

@@ -13,6 +13,7 @@
             [@job.name, job_path(@job)],
             ['Steps', job_steps_path(@job)],
             [@step.name, ''],
+            ['Guidance', ''],
           ]
       %>
       <%= render "breadcrumbs", nodes: nodes %>
@@ -44,9 +45,9 @@
           <div class="hidden sm:block">
             <div class="border-b border-gray-200">
               <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                <a href="<%= job_step_guides_path(@job, @step) %>" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
+                <a href="<%= job_step_guides_path(@job, @step) %>" class="flex whitespace-nowrap border-b-2 border-orange-500 px-1 py-4 text-sm font-medium text-orange-600 hover:text-orange-600" aria-current="page">
                   Guidance
-                  <span class="ml-3 hidden rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-900 md:inline-block"><%= @step.guides.count %></span>
+                  <span class="ml-3 hidden rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-600 md:inline-block"><%= @step.guides.count %></span>
                 </a>
                 <a href="#" class="flex whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-200 hover:text-gray-700">
                   Todos
@@ -56,24 +57,36 @@
               </nav>
             </div>
 
-            <div class="mt-10">
-              <dl class="space-y-10">
+            <% @guides.each do |g| %>
 
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Guidance</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">Practical advice on how to approach getting this Step completed.</dd>
+                <div class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                    </svg>
+                    <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                      <span class="truncate font-medium"><%= link_to g.name, g.doc %></span>
+                      <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                    </div>
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <span class="font-medium text-gray-600">
+                      <%= link_to t("edit"), edit_job_step_guide_path(@job, @step, g), class: "btn btn-secondary mb-5" %>
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Todos</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">A concrete real-life list of actions to take.</dd>
-                </div>
-                <div>
-                  <dt class="text-base font-semibold leading-7 text-gray-900">Resources</dt>
-                  <dd class="mt-2 text-base leading-7 text-gray-600">Useful reference material that can assit your planning.</dd>
-                </div>
+            
+            <% end %>
 
-              </dl>
-            </div>
+                <div class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                  <div class="flex w-0 flex-1 items-center">
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <span class="font-medium text-gray-600">
+                      <%= link_to "Add", new_job_step_guide_path(@job, @step), class: "btn btn-secondary mb-5" %>
+                    </span>
+                  </div>
+                </div>
 
           </div>
         </div>

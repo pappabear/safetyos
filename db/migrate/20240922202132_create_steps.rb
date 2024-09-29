@@ -5,7 +5,7 @@ class CreateSteps < ActiveRecord::Migration[7.2]
       t.bigint :job_id
       t.string :name
       t.bigint :sequence
-      t.text :notes
+      #t.text :notes
 
       t.timestamps
     end

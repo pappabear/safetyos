@@ -77,3 +77,4 @@ gem "colorize"
 gem "actiontext"
 gem 'acts_as_tenant'
 gem 'rails-erd', group: :development # https://github.com/voormedia/rails-erd?tab=readme-ov-file
+gem 'active_storage_validations'
