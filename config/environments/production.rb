@@ -98,6 +98,18 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.action_mailer.default_url_options = {host: Jumpstart.config.domain}
-  config.action_mailer.smtp_settings = Jumpstart::Mailer.new(Jumpstart.config).settings
+  #config.action_mailer.default_url_options = {host: Jumpstart.config.domain}
+  #config.action_mailer.smtp_settings = Jumpstart::Mailer.new(Jumpstart.config).settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         'smtp.gmail.com',
+    port:            587,
+    domain:          'example.com',
+    user_name:       'chip.irek',
+    password:        'Wel0veh0ckeyandh0rses!',
+    authentication:  'plain',
+    enable_starttls: true,
+    open_timeout:    5,
+    read_timeout:    5 }
+
 end
