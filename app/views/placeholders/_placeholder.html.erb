@@ -1,0 +1,17 @@
+<div id="<%= dom_id placeholder %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Account</p>
+    <%= placeholder.account_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Step</p>
+    <%= placeholder.step_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= placeholder.name %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this placeholder", placeholder, class: "btn btn-secondary" %>
+  <% end %>
+</div>

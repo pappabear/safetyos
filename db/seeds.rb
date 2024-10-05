@@ -128,5 +128,17 @@ steps.each do |s|
 end
 
 puts ' '
+puts '      -- Adding `placeholders`'
+
+steps = Step.all
+steps.each do |s|
+    p = Placeholder.new
+    p.account_id = s.account_id
+    p.step_id = s.id
+    p.name = "Coming soon"
+    p.save!
+end
+
+puts ' '
 puts '-- Flusing Redis cache -------------------------'.green
 
