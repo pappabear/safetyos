@@ -1,0 +1,33 @@
+<div id="<%= dom_id todo %>">
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Account</p>
+    <%= todo.account_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Step</p>
+    <%= todo.step_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Name</p>
+    <%= todo.name %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Sequence</p>
+    <%= todo.sequence %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Todo status</p>
+    <%= todo.todo_status_id %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Description</p>
+    <%= todo.description %>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-medium text-gray-500">Notes</p>
+    <%= todo.notes %>
+  </div>
+  <% if action_name != "show" %>
+    <%= link_to "View this todo", todo, class: "btn btn-secondary" %>
+  <% end %>
+</div>

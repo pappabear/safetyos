@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :steps do
       resources :guides
       resources :placeholders
+      resources :todos
     end
   end
 

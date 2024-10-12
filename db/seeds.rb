@@ -140,5 +140,20 @@ steps.each do |s|
 end
 
 puts ' '
+puts '      -- Adding `todos`'
+
+steps = Step.where(account_id: 1)
+steps.each do |s|
+    
+    # add todos to a step
+    5.times do
+        t = Todo.create! name: Faker::Lorem.sentence(word_count: rand(2..5)), account_id: 1, step_id: s.id, 
+                    description: Faker::Lorem.sentence(word_count: rand(2..10)), notes: Faker::Lorem.sentence(word_count: rand(2..10)),
+                    todo_status_id: rand(1..3)
+    end
+
+end
+
+puts ' '
 puts '-- Flusing Redis cache -------------------------'.green
 

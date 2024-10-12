@@ -4,6 +4,7 @@ class Step < ApplicationRecord
   validates_presence_of :name
   has_one :job
   has_many :guides
+  has_many :todos
   has_rich_text :notes
   has_rich_text :description
 end

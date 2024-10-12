@@ -1,0 +1,38 @@
+<%= content_for :title, "Todos" %>
+<%= turbo_stream_from :todos %>
+
+<div class="container px-4 mx-auto my-8">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <h1 class="h3">Todos</h1>
+
+      <div class="text-sm font-medium">
+        <span class="text-gray-500 dark:text-gray-300/75">Sort by:</span>
+        <%= sortable @todos, :account_id, "Account", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :step_id, "Step", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :name, "Name", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :sequence, "Sequence", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :todo_status_id, "Todo status", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :description, "Description", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+        <%= sortable @todos, :notes, "Notes", class: "text-gray-700 dark:text-gray-300 mr-1" %>
+      </div>
+    </div>
+
+    <%= link_to t("scaffold.new.title", model: "Todo"), new_todo_path, class: "btn btn-secondary" %>
+  </div>
+
+  <%= tag.div id: ("todos" if first_page?), class: "bg-white dark:bg-gray-900 dark:border dark:border-gray-700 rounded-md shadow p-6 space-y-8" do %>
+    <%= render partial: "todos/todo", collection: @todos, as: :todo, cached: true %>
+
+    <div class="hidden only:block text-center">
+      <p class="mb-4 h3">Create your first Todo</p>
+      <%= link_to t("scaffold.new.title", model: "Todo"), new_todo_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <% if @pagy.pages > 1 %>
+    <div class="my-6 text-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
+</div>
